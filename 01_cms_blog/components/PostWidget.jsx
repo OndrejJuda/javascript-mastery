@@ -1,11 +1,56 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import moment from 'moment';
+import Link from 'next/link';
 
-const PostWidget = () => {
+import { getRecentPosts, getSimilarPosts } from '../services';
+
+const PostWidget = ({ categories, slug }) => {
+  const [relatedPosts, setRealtedPosts] = useState([]);
+
+  useEffect(() => {
+    if (slug) {
+      getSimilarPosts(slug, categories)
+        .then((result) => setRealtedPosts(result));
+    } else {
+      getRecentPosts()
+        .then((result) => setRealtedPosts(result));
+    }
+  }, [categories, slug]);
+
   return (
-    <div>
-      PostWidget
-      </div>
+    <div className='bg-white shadow-lg rounded-lg p-8 mb-8'>
+      <h3 className='text-xl mb-8 font-semibold border-b pb-4'>
+        {slug ? 'Related Posts' : 'Recent Posts'}
+        {
+          relatedPosts.map((post) => (
+            <div key={post.title} className='flex items-center w-full mb-4'>
+              <div className='w-16 flex-none'>
+                <img
+                  src={post.featuredImage.url}
+                  alt={post.title}
+                  height='60px'
+                  width='60px'
+                  className='align-middle rounded-full'
+                />
+              </div>
+              <div className='flex-grow ml-4'>
+                <p className='text-gray-500 text-xs'>
+                  {moment(post.createdAt).format('MMM DD, YYYY')}
+                </p>
+                <Link
+                  key={post.title}
+                  href={`/post/${post.slug}`}
+                  className='text-lg'
+                >
+                  <span className='text-sm cursor-pointer leading-3 transition duration-700 hover:text-pink-600'>{post.title}</span>
+                </Link>
+              </div>
+            </div>
+          ))
+        }
+      </h3>
+    </div>
   );
-}
+};
 
-export default PostWidget
+export default PostWidget;
