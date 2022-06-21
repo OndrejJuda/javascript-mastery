@@ -26,9 +26,10 @@ const PostDetails = ({ post }) => {
 };
 
 export async function getStaticPaths() {
+  const posts = await getPosts();
   return {
-    paths: [],
-    fallback: 'blocking'
+    paths: posts.map(({ node: { slug } }) => ({ params: { slug } })),
+    fallback: false,
   }
 }
 
