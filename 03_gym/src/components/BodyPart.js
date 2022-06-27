@@ -3,7 +3,7 @@ import { Stack, Typography } from '@mui/material';
 
 import Icon from '../assets/icons/gym.png'
 
-const BodyPart = ({ item, setBodypart, bodyPart }) => {
+const BodyPart = ({ item, setBodyPart, bodyPart }) => {
   return (
     <Stack
       type='button'
@@ -19,8 +19,13 @@ const BodyPart = ({ item, setBodypart, bodyPart }) => {
         gap: '47px',
         borderTop: bodyPart === item ? '4px solid #ff2625' : ''
       }}
+      onClick={() => {
+        setBodyPart(item);
+        window.scrollTo({ top: 1800, left: 100, behavior: 'smooth' });
+      }}
     >
-      <img src={Icon} alt='dumbell' styles={{ width: '40px', height: '40px' }} />
+      <img src={Icon} alt='dumbell' width='40px' height='40px' />
+      <Typography fontSize='24px' fontWeight='bold' color='#3a1212' textTransform='capitalize'>{item}</Typography>
     </Stack >
   );
 };
