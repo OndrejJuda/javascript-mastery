@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import Search from './Search';
 
 const Navbar = ({ darkTheme, setDarkTheme }) => {
   return (
@@ -25,6 +26,7 @@ const Navbar = ({ darkTheme, setDarkTheme }) => {
           </div>
         </button>
       </div>
+      <Search />
     </div>
   );
 };
