@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Footer, Navbar, Router } from './components';
 
 const App = () => {
-  const [darkTheme, setDarkTheme] = useState(false); // window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+  const [darkTheme, setDarkTheme] = useState(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
 
   return (
     <div className={darkTheme ? 'dark' : ''}>

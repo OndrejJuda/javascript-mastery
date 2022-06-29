@@ -7,7 +7,7 @@ const Router = () => {
     <div className='p-4'>
       <Routes>
         <Route path='/' element={<Navigate replace to='/search' />} />
-        {['search', 'videos', 'news', 'image'].map((route) => (<Route path={`/${route}`} element={<Results />} />))}
+        {['search', 'videos', 'news', 'image'].map((route, i) => (<Route key={i} path={`/${route}`} element={<Results />} />))}
       </Routes>
     </div>
   );
