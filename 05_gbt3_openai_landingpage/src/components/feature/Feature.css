@@ -59,3 +59,9 @@
     margin: 1rem 0;
   }
 }
+
+@media screen and (max-width: 500px) {
+  .gpt3__features-container__feature {
+    flex-direction: column !important;
+  }
+}

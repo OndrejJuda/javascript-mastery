@@ -2,9 +2,8 @@ import React from 'react';
 import './Feature.css';
 
 const Feature = ({ title, text, direction, fullWidth }) => {
-  console.log(title, fullWidth)
   return (
-    <div className="gpt3__features-container__feature" style={{
+    <article className="gpt3__features-container__feature" style={{
       flexDirection: direction === 'row' ? 'row' : 'column',
       width: fullWidth ? '100%' : 'auto'
     }}>
@@ -15,7 +14,7 @@ const Feature = ({ title, text, direction, fullWidth }) => {
       <div className="gpt3__features-container_feature-text">
         <p>{text}</p>
       </div>
-    </div>
+    </article>
   );
 };
 
