@@ -44,18 +44,19 @@ const App = () => {
           <Navbar />
         </div>
         <div>
+          <ThemeSettings />
           <Routes>
             {/* Dashboard */}
             <Route path='/' element={<Ecommerce />} />
             <Route path='/ecommerce' element={<Ecommerce />} />
             {/* Pages */}
-            <Route path='/orders' element='Order' />
+            <Route path='/orders' element={<Orders />} />
             <Route path='/employees' element={<Employees />} />
             <Route path='/customers' element={<Customers />} />
             {/* Apps */}
+            <Route path='/calendar' element={<Calendar />} />
             <Route path='/kanban' element={<Kanban />} />
             <Route path='/editor' element={<Editor />} />
-            <Route path='/calendar' element={<Calendar />} />
             <Route path='/color-picker' element={<ColorPicker />} />
             {/* Cahrts */}
             <Route path='/line' element={<Line />} />

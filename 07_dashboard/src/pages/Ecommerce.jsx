@@ -16,6 +16,13 @@ const Ecommerce = () => {
               <p className='font-bold text-gray-400'>Earnings</p>
               <p className='text-2xl'>$63,448.78</p>
             </div>
+            <button
+              type="button"
+              style={{ backgroundColor: 'blue' }}
+              className="text-2xl opacity-0.9 text-white hover:drop-shadow-xl rounded-full  p-4"
+            >
+              <BsCurrencyDollar />
+            </button>
           </div>
           <div className='mt-6'>
             <Button
