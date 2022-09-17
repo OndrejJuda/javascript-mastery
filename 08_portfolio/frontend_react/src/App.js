@@ -1,10 +1,19 @@
-import './App.css';
+import { About, Footer, Header, Skills, Testimonial, Work } from './container';
+import { Navbar } from './components';
+
+import './App.scss';
 
 function App() {
   return (
-    <h1 className="">
-      APP
-    </h1>
+    <main className="app">
+      <Navbar />
+      <Header />
+      <About />
+      <Work />
+      <Skills />
+      <Testimonial />
+      <Footer />
+    </main>
   );
 }
 
