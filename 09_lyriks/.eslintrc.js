@@ -14,6 +14,7 @@ module.exports = {
   plugins: ['react'],
   rules: {
     'max-len': 0,
+    'jsx-quotes': ['error', 'prefer-single'],
     'no-param-reassign': 0,
     'jsx-a11y/label-has-associated-control': 0,
     'react/function-component-definition': 0,
