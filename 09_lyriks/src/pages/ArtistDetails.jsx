@@ -17,7 +17,7 @@ const ArtistDetails = () => {
 
   if (error) {
     return (
-      <Error message={error} />
+      <Error message={error.data?.message} />
     );
   }
 
