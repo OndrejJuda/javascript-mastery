@@ -1,6 +1,12 @@
-require("@nomicfoundation/hardhat-toolbox");
+// https://dashboard.alchemy.com/apps/lqz36gkqlj7j45ng
+require('@nomiclabs/hardhat-waffle');
 
-/** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
-  solidity: "0.8.17",
-};
+  solidity: '0.8.0',
+  networks: {
+    goerli: {
+      url: '', // alchemy app https
+      accounts: [''] // private keys
+    }
+  }
+}
