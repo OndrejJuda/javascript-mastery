@@ -19,9 +19,16 @@ const Input = ({ placeholder, name, type, handleChange, value }) => (
 )
 
 const Welcome = () => {
-  const { connectWallet, currentAccount } = useContext(TransactionContext);
+  const { connectWallet, currentAccount, formData, sendTransaction, handleChange, isLoading } = useContext(TransactionContext);
 
-  const handleSubmit = () => { };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { addressTo, amount, keyword, message } = formData;
+
+    if (!addressTo || !amount || !keyword || !message) return;
+
+    sendTransaction()
+  };
 
   return (
     <div className='flex w-full justify-center items-center'>
@@ -48,10 +55,10 @@ const Welcome = () => {
               Reliability
             </div>
             <div className={commonStyles}>Security</div>
-            <div className={`rounded-tr-2xl ${commonStyles}`}>
+            <div className={`rounded-tr-2xl row-start-1 col-start-2 sm:col-start-3 ${commonStyles}`}>
               Ethereum
             </div>
-            <div className={`rounded-bl-2xl ${commonStyles}`}>
+            <div className={`rounded-bl-2xl row-start-3 sm:row-start-2 ${commonStyles}`}>
               Web 3.0
             </div>
             <div className={commonStyles}>Low fees</div>
@@ -80,13 +87,13 @@ const Welcome = () => {
             </div>
           </div>
           <div className='p-5 sm:w-96 w-full flex flex-col justify-start items-center blue-glassmorphism'>
-            <Input placeholder='Address To' name='addressTo' type='text' handleChange={() => { }} />
-            <Input placeholder='Ammount (ETH)' name='ammount' type='number' handleChange={() => { }} />
-            <Input placeholder='Keyword (Gif)' name='keyword' type='text' handleChange={() => { }} />
-            <Input placeholder='Enter Message' name='message' type='text' handleChange={() => { }} />
+            <Input placeholder='Address To' name='addressTo' type='text' handleChange={handleChange} />
+            <Input placeholder='Ammount (ETH)' name='amount' type='number' handleChange={handleChange} />
+            <Input placeholder='Keyword (Gif)' name='keyword' type='text' handleChange={handleChange} />
+            <Input placeholder='Enter Message' name='message' type='text' handleChange={handleChange} />
             <div className='h-[1px] w-full bg-gray-400 my-2' />
             {
-              true ? (
+              isLoading ? (
                 <Loader />
               ) : (
                 <button
